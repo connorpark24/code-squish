@@ -55,7 +55,7 @@
     processing = true;
 
     try {
-      const response = await axios.post('http://localhost:8000/remove_blank_rows/', formData, {
+      const response = await axios.post('http://35.92.136.44/remove_blank_rows/', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
