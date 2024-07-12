@@ -1,5 +1,4 @@
 from fastapi import FastAPI, File, UploadFile
-from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 import io
 import cv2
@@ -7,18 +6,6 @@ import numpy as np
 from PIL import Image
 
 app = FastAPI()
-
-origins = [
-    "http://localhost:5173"
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=origins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 @app.post("/remove_blank_rows")
 async def remove_blank_rows(file: UploadFile = File(...), threshold: int = 10, spacing: int = 6):
@@ -57,7 +44,3 @@ def process_image(image_np, threshold, spacing):
     cleaned_image = np.delete(image_np, rows_to_remove, axis=0)
 
     return cleaned_image
-
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
