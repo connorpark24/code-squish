@@ -1,7 +1,6 @@
 <script lang="ts">
   import axios from 'axios';
   import { writable } from 'svelte/store';
-  import { fade } from 'svelte/transition';
 
   let file: File | null = null;
   let imageUrl: string | null = null;

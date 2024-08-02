@@ -4,8 +4,20 @@ import io
 import cv2
 import numpy as np
 from PIL import Image
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
+
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 @app.post("/remove_blank_rows")
 async def remove_blank_rows(file: UploadFile = File(...), threshold: int = 10, spacing: int = 6):
