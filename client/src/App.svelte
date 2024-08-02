@@ -54,7 +54,7 @@
     processing = true;
 
     try {
-      const response = await axios.post(import.meta.env.VITE_API_URL, formData, {
+      const response = await axios.post(`${import.meta.env.VITE_API_URL}/remove_blank_rows`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
