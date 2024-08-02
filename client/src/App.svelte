@@ -55,7 +55,7 @@
     processing = true;
 
     try {
-      const response = await axios.post('http://35.92.136.44/remove_blank_rows/', formData, {
+      const response = await axios.post(import.meta.env.VITE_API_URL, formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
